@@ -1,0 +1,83 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+section.intro {
+  background-image: url('../../../src/img/bg-section-intro-min.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  position: relative;
+  padding-bottom: 15px;
+  overflow: hidden;
+
+  @include media(">=desktop") {
+    padding-top: 210px;
+    padding-bottom: 50px;
+  }
+
+  &:after {
+    height: 304px;
+    background: linear-gradient(to bottom, rgba($purple, 0) 0%, $purple 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: "";
+  }
+
+  .intro-img {
+    margin: 30px auto -35px;
+    max-width: 262px;
+    display: block;
+
+    @include media(">=desktop") {
+      max-width: 480px;
+      margin: 50px auto 30px;
+    }
+
+    @include media(">=desktop") {
+      max-width: 100%;
+      margin: 0;
+      left: 50%;
+      position: absolute;
+      top: 140px;
+      transform: translateX(-40px);
+    }
+
+    @include media(">=xl") {
+      top: 240px;
+      transform: translateX(106px);
+    }
+  }
+
+  .intro-content {
+    position: relative;
+    z-index: 1;
+
+    @include media(">=desktop") {
+      max-width: 700px;
+    }
+    @include media(">=xl") {
+      max-width: 1000px;
+    }
+
+    h1 {
+      margin-bottom: 0.18em;
+    }
+
+    p {
+      @include media(">=desktop") {
+        max-width: 500px;
+      }
+    }
+  }
+
+  .buttons {
+    margin: 0 -5px;
+
+    .btn {
+      margin: 5px;
+    }
+  }
+
+}

@@ -1,0 +1,80 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+section.content_with_cover_image {
+  background-repeat: no-repeat;
+  height: 700px;
+  background-size: 560px auto;
+  background-position: bottom center;
+  position: relative;
+
+  &:before {
+    height: 60%;
+    background: linear-gradient(to bottom, rgba($purple, 0) 0%, $purple 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: "";
+  }
+
+  @include media(">=tablet") {
+    background-position: top center;
+    height: 950px;
+    background-size: 850px auto;
+  }
+
+  @include media(">=desktop") {
+    height: 1100px;
+    background-size: 1024px auto;
+  }
+
+  @include media(">=xl") {
+    height: 1450px;
+    background-size: 1440px auto;
+  }
+
+  + section {
+    margin-top: -100px;
+    position: relative;
+    @include media(">=tablet") {
+      margin-top: -200px;
+    }
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .section-content {
+
+    &.align-center {
+      margin: 0 auto;
+
+      p {
+        margin: 0 auto;
+      }
+    }
+
+    max-width: 670px;
+
+    h2 {
+      @include media("<desktop") {
+        font-size: 48px;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      @include media(">=desktop") {
+        font-size: 20px;
+      }
+      max-width: 570px;
+    }
+  }
+
+  .section-img {
+    margin: 0 auto;
+    display: block;
+  }
+}

@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+// Base styles
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: $purple;
+  font-family: $font-primary;
+  color: $gray;
+  font-weight: 400;
+  letter-spacing: -.04em;
+  font-size: 18px;
+  line-height: 1.5;
+
+  &.fixed {
+    overflow: hidden;
+  }
+}
+
+#page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#primary {
+  flex-grow: 1;
+}
+
+// Layout elements
+.container {
+  margin: 0 auto;
+  max-width: 750px;
+  padding: 0 10px;
+  @include media(">=desktop") {
+    max-width: 1024px;
+    padding: 0 20px;
+  }
+  @include media(">=xl") {
+    max-width: 1320px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 -15px;
+}
+
+.col {
+  padding: 0 15px;
+}
+
+// Typography
+.text-center {
+  text-align: center;
+}
+
+a {
+  &:focus {
+    outline: none
+  }
+
+  &:visited {
+    color: initial;
+  }
+}
+
+// Titles
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+  line-height: .9;
+  font-weight: 400;
+  color: $white;
+
+  i, em {
+    color: $yellow;
+    font-family: $font-secondary;
+  }
+}
+
+h1, .h1 {
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -.04em;
+
+  @include media(">=desktop") {
+    font-size: 80px;
+    line-height: 76px;
+  }
+  @include media(">=xl") {
+    font-size: 128px;
+    line-height: 114px;
+  }
+
+  + p {
+    font-size: 14px;
+    @include media(">=tablet") {
+      font-size: 16px;
+    }
+    @include media(">=desktop") {
+      font-size: 18px;
+    }
+    @include media(">=xl") {
+      font-size: 20px;
+    }
+  }
+}
+
+h2, .h2 {
+  font-size: 32px;
+  margin: 0.7em 0 0.4em;
+  letter-spacing: -.035em;
+
+  @include media(">=tablet") {
+    font-size: 42px;
+  }
+
+  @include media(">=desktop") {
+    font-size: 60px;
+  }
+  @include media(">=xl") {
+    font-size: 96px;
+  }
+
+  + p {
+    font-size: 14px;
+    @include media(">=tablet") {
+      font-size: 16px;
+    }
+    @include media(">=desktop") {
+      font-size: 20px;
+    }
+  }
+}
+
+h3, .h3 {
+  font-size: 48px;
+  letter-spacing: -.035em;
+  @include media(">=desktop") {
+    font-size: 54px;
+  }
+  @include media(">=xl") {
+    font-size: 58px;
+  }
+}
+
+h4, .h4 {
+  font-size: 36px;
+}
+
+h5, .h5 {
+  font-size: 22px;
+  letter-spacing: -.035em;
+  @include media(">=tablet") {
+    font-size: 28px;
+  }
+}
+
+.subtitle {
+  font-size: 20px;
+}
+
+// Buttons
+.btn, input[type=submit].btn {
+  display: inline-block;
+  text-align: center;
+  align-items: center;
+  padding: 18px 15px;
+  min-width: 170px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 16px;
+  color: $black;
+  background-color: $yellow;
+  transition: .3s;
+  text-decoration: none;
+  box-sizing: border-box;
+  border: 0;
+  cursor: pointer;
+  line-height: 1.5;
+  font-family: $font-primary;
+
+  @include media(">=desktop") {
+    padding: 18px 15px;
+    min-width: 198px;
+  }
+
+  &:hover {
+    background-color: $white;
+    color: $black;
+  }
+
+  &.btn--secondary {
+    background-color: transparent;
+    color: $white;
+    box-shadow: inset 0 0 0 1px rgba($white, .3);
+
+    &:hover {
+      background-color: rgba($white, .3);
+      color: $white;
+    }
+  }
+
+  &.btn--sm {
+    padding: 12px 15px;
+    min-width: 135px;
+  }
+}
+
+.intDrawing {
+  display: block;
+  height: 0;
+  overflow: hidden;
+  transition: height 1.5s cubic-bezier(.17, .67, 1, 1.23);
+}
+
+.inViewport {
+  .intDrawing {
+    height: calc(100% + 0.4em);
+  }
+}
+
+.fadeIn {
+  transition: opacity 2s;
+
+  &:not(.inViewport) {
+    opacity: 0;
+  }
+}

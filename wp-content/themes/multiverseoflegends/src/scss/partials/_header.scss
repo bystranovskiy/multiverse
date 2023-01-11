@@ -1,0 +1,257 @@
+header {
+  padding: 5px 0;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  transition-duration: .3s;
+  transition-property: background, padding;
+
+  @include media(">=desktop") {
+    padding: 35px 0 15px 0;
+  }
+
+  &.fixed-header {
+    background: rgba($purple-dark, .95);
+    padding: 5px 0;
+
+    .custom-logo {
+      max-width: 110px;
+    }
+  }
+
+  .row {
+    align-items: center;
+  }
+
+  // Global header ul lists
+  ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+
+    li {
+      padding: 0 5px;
+
+      a {
+        display: block;
+        color: $white;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .col-logo {
+    position: relative;
+    z-index: 1;
+  }
+
+  .custom-logo {
+    transform: translateY(4px);
+    transition: .3s;
+    max-width: 110px;
+
+    @include media(">=desktop") {
+      max-width: 100%;
+    }
+  }
+
+  // Header Menu
+  .menu {
+
+    .menu-item {
+      padding: 0 16px;
+
+      a {
+        transition: color .3s;
+        font-size: 16px;
+
+        &:visited, &:focus {
+          color: $white;
+        }
+
+        &:hover, &:active {
+          color: rgba($white, .5);
+        }
+
+      }
+    }
+  }
+
+  // Social links
+  .col-social {
+
+    li {
+
+      a {
+        background-color: rgba($white, .17);
+        border-radius: 4px;
+        width: 50px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color .3s;
+
+        &:hover {
+          background-color: rgba($white, .4);
+        }
+      }
+    }
+  }
+
+  // Language switcher
+  .wpml-ls {
+    &.wpml-ls-legacy-list-horizontal {
+      padding: 0;
+    }
+
+    .wpml-ls-item {
+      font-size: 16px;
+
+      a {
+        transition: color .3s;
+        color: $white;
+      }
+
+      &:hover, &.wpml-ls-current-language {
+        a {
+          color: rgba($white, .4);
+        }
+      }
+    }
+  }
+
+  .col-buttons {
+    display: none;
+    @include media(">=xl") {
+      display: block;
+    }
+  }
+
+  .col-mobile-menu-toggle {
+    @include media(">=desktop") {
+      display: none;
+    }
+  }
+
+  .toggle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    background-color: $yellow;
+    transition: background-color .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      display: block;
+      position: relative;
+      background-color: $black;
+      border-radius: 2px;
+      width: 16px;
+      height: 2px;
+      transition: background-color .3s;
+
+      &:before, &:after {
+        content: "";
+        position: absolute;
+        background: $black;
+        border-radius: 2px;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        right: 0;
+        transform-origin: center;
+      }
+
+      &:before {
+        top: -4px;
+        transition: transform .3s 0s, top .3s .3s;
+      }
+
+      &:after {
+        bottom: -4px;
+        transition: transform .3s 0s, bottom .3s .3s;
+      }
+    }
+
+    &:hover, &.active {
+      background-color: $white;
+    }
+
+    &.active {
+      span {
+        background-color: transparent;
+
+        &:before {
+          top: 0;
+          transform: rotate(45deg);
+          transition: top .3s 0s, transform .3s .3s;
+        }
+
+        &:after {
+          bottom: 0;
+          transform: rotate(-45deg);
+          transition: bottom .3s 0s, transform .3s .3s;
+        }
+      }
+    }
+  }
+
+  @include media("<desktop") {
+    .col-content {
+      visibility: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: $purple-dark;
+      padding: 20px;
+      opacity: 0;
+      transition: visibility 0s .5s, opacity .5s 0s;
+
+      nav {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .row {
+          flex-direction: column;
+
+          .col {
+            padding: 10px 20px;
+          }
+        }
+
+        .menu {
+          flex-direction: column;
+          text-align: center;
+
+          li {
+            a {
+              font-size: 20px;
+              text-transform: uppercase;
+              line-height: 1.7;
+            }
+          }
+        }
+      }
+    }
+    &.active {
+      .col-content {
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 0s 0s, opacity .5s 0s;
+      }
+    }
+  }
+
+}
